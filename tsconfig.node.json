@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "module": "es6",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+  },
+  "include": [
+    "vite.config.ts", 
+    "package.json"
+  ]
+}

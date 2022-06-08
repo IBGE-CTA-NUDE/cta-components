@@ -1,0 +1,38 @@
+{
+  "name": "cta-components",
+  "private": true,
+  "version": "0.0.1",
+  "main": "dist/cta-components.umd.js",
+  "module": "dist/cta-components.es.js",
+  "license": "UNLICENSED",
+  "exports": {
+    ".": {
+      "import": "./dist/cta-components.es.js",
+      "require": "./dist/cta-components.umd.js"
+    }
+  },
+  "types": "types/index.d.ts",
+  "files": [
+    "dist",
+    "types"
+  ],
+  "scripts": {
+    "dev": "yarn theme:components && yarn vite:dev",
+    "build": "yarn theme:components && yarn vite:build && cp -a dist/. versions/",
+    "icons": "node ./lib/create-icons-sprite.js",
+    "theme:components": "node ./lib/update-components-theme.js",
+    "vite:dev": "vite",
+    "vite:build": "tsc && vite build"
+  },
+  "dependencies": {
+    "lit": "^2.2.5",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@svgdotjs/svg.js": "^3.1.2",
+    "glob": "^8.0.3",
+    "svgdom": "^0.1.10",
+    "typescript": "^4.7.3",
+    "vite": "^2.9.9"
+  }
+}

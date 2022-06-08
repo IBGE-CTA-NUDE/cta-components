@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/src/favicon.svg" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vite + Lit App</title>
+  <script type="module" src="/src/index.ts"></script>
+
+</head>
+
+<body style="overflow: auto">
+  <cta-icons-sprite></cta-icons-sprite>
+  <div style="display: flex; min-height: 100%">
+    <div style="
+          display: inline-block;
+          width: 200px;
+          margin-right: 50px;
+          border-right: 1px solid rgba(0, 0, 0, 0.1);
+        ">
+        <div style="position:sticky; top: 10px">
+          <a style="display:block" href="#accordion">Accordion</a>
+          <a style="display:block" href="#icons">Icons</a>
+        </div>
+    </div>
+
+    <div style="
+          display: inline-block;
+          width: calc(100% - 300px);
+          padding-bottom: 10px;
+        ">
+      <div id="accordion">
+        <h2>Accordion</h2>
+
+        <div class="component-example">
+          <cta-accordion name="Planejamento">
+            O cuidado em identificar pontos críticos na crescente influência da mídia desafia a capacidade de equalização dos métodos utilizados na avaliação de resultados.
+          </cta-accordion>
+        </div>
+
+        <div class="dark-mode component-example">
+          <cta-accordion open name="Planejamento">
+            O cuidado em identificar pontos críticos na crescente influência da mídia desafia a capacidade de equalização dos métodos utilizados na avaliação de resultados.
+          </cta-accordion>
+        </div>
+
+        <div class="component-example">
+          <cta-accordion __off__ name="Planejamento">
+            O cuidado em identificar pontos críticos na crescente influência da mídia desafia a capacidade de equalização dos métodos utilizados na avaliação de resultados.
+          </cta-accordion>
+        </div>
+      </div>
+
+      <div id="icons">
+        <h2>Icons</h2>
+
+        <div class="component-example">
+          <cta-icon name="chevron-down"></cta-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
