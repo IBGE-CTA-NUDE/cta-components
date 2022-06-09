@@ -24,7 +24,7 @@
     "vite:dev": "vite",
     "vite:build": "tsc && vite build",
     "copy:local-versions": "cp -a ./dist/. ./versions/",
-    "copy:cta-builder": "cp -a ./dist/. ../cta-builder/assets/js/"
+    "copy:cta-builder": "cp -a ./dist/. ../cta-builder/assets/js/ && cp -a ./types/. ../cta-builder/types/cta-components/"
   },
   "dependencies": {
     "lit": "^2.2.5",

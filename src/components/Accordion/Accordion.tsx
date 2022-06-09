@@ -13,6 +13,19 @@ declare global {
   interface HTMLElementTagNameMap {
     [TAG_NAME]: AccordionElement
   }
+
+  namespace JSX {
+    interface IntrinsicElements {
+      [TAG_NAME]: AccordionElementAttributes
+    }
+  }
+}
+
+export interface AccordionElementAttributes extends React.HTMLAttributes<HTMLDivElement> {
+  /** @default false */
+  open?: boolean;
+  /** The text to be shown in the trigger */
+  name: string;
 }
 
 export interface AccordionElement extends HTMLElement, BaseComponent {
