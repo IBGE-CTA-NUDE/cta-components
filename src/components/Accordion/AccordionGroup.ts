@@ -2,7 +2,8 @@ import { css, html, PropertyDeclarations } from 'lit';
 
 import { BaseComponent } from '../../utils/BaseComponent';
 import { define } from '../../utils/define';
-import { addEventListener } from '../../utils/addEventListener';
+import { addEventListener, UnlistenFunction } from '../../utils/addEventListener';
+import { hasProperty } from '../../utils/hasProperty';
 
 const TAG_NAME = 'cta-accordion-group';
 
@@ -44,8 +45,8 @@ export class AccordionGroup extends BaseComponent {
   // Properties
   multipleOpen = false;
 
-  private removeListener = null;
-  private currentlyOpen = null;
+  private removeListener: UnlistenFunction | null = null;
+  private currentlyOpen: HTMLElement | null = null;
 
   // Lifecycle methods
   override connectedCallback(): void {
@@ -59,7 +60,7 @@ export class AccordionGroup extends BaseComponent {
   override disconnectedCallback() {
     super.disconnectedCallback()
     this.currentlyOpen = null;
-    this.removeListener();
+    this.removeListener?.();
   }
 
   // Component methods
@@ -80,7 +81,7 @@ export class AccordionGroup extends BaseComponent {
       return;
     }
 
-    if (this.currentlyOpen) {
+    if (this.currentlyOpen && hasProperty('open', this.currentlyOpen)) {
       this.currentlyOpen.open = false;
     }
 

@@ -1,4 +1,4 @@
-type UnlistenFunction = () => void;
+export type UnlistenFunction = () => void;
 
 export function addEventListener<F extends ((...args: any[]) => unknown)>(
   element: HTMLElement,

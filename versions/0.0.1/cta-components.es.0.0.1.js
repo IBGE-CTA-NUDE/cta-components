@@ -643,7 +643,7 @@ const theme = r$4`
 const components = r$4`
   ${theme}
 `;
-const TAG_NAME$2 = "cta-theme";
+const TAG_NAME$3 = "cta-theme";
 class CtaTheme extends BaseComponent {
   createRenderRoot() {
     return this;
@@ -662,7 +662,7 @@ class CtaTheme extends BaseComponent {
       `;
   }
 }
-CtaTheme.tagName = TAG_NAME$2;
+CtaTheme.tagName = TAG_NAME$3;
 define(CtaTheme.tagName, CtaTheme);
 /**
  * @license
@@ -927,7 +927,7 @@ const accordionStyles = r$4`
     transform: rotate(180deg);
   }
 `;
-const TAG_NAME$1 = "cta-accordion";
+const TAG_NAME$2 = "cta-accordion";
 class Accordion extends BaseComponent {
   constructor() {
     super();
@@ -1011,13 +1011,78 @@ class Accordion extends BaseComponent {
     `;
   }
 }
-Accordion.tagName = TAG_NAME$1;
+Accordion.tagName = TAG_NAME$2;
 Accordion.styles = [accordionStyles];
 Accordion.properties = __spreadProps(__spreadValues({}, BaseComponent.properties), {
   open: { attribute: true, type: Boolean, reflect: true },
   name: { attribute: true, type: String, reflect: true }
 });
 define(Accordion.tagName, Accordion);
+function addEventListener(element, event, callback, options = {}) {
+  element.addEventListener(event, callback, options);
+  return () => {
+    element.removeEventListener(event, callback, options);
+  };
+}
+function isObjectLike(value) {
+  const type = typeof value;
+  return value != null && type === "object";
+}
+function hasProperty(property, value) {
+  return isObjectLike(value) && property in value;
+}
+const TAG_NAME$1 = "cta-accordion-group";
+class AccordionGroup extends BaseComponent {
+  constructor() {
+    super(...arguments);
+    this.multipleOpen = false;
+    this.removeListener = null;
+    this.currentlyOpen = null;
+  }
+  connectedCallback() {
+    this.removeListener = addEventListener(this, "click", this.onClick.bind(this));
+  }
+  disconnectedCallback() {
+    var _a;
+    super.disconnectedCallback();
+    this.currentlyOpen = null;
+    (_a = this.removeListener) == null ? void 0 : _a.call(this);
+  }
+  onClick(event) {
+    if (this.multipleOpen) {
+      return;
+    }
+    const target = event.target instanceof HTMLElement ? event.target : null;
+    if (!target) {
+      return;
+    }
+    if (target === this.currentlyOpen) {
+      return;
+    }
+    if (this.currentlyOpen && hasProperty("open", this.currentlyOpen)) {
+      this.currentlyOpen.open = false;
+    }
+    this.currentlyOpen = target;
+  }
+  render() {
+    if (this.__off__) {
+      return $`${this.innerHTML}`;
+    }
+    return $`
+      <slot></slot>
+    `;
+  }
+}
+AccordionGroup.tagName = TAG_NAME$1;
+AccordionGroup.styles = r$4`
+    :host {
+      display: contents;
+    }
+  `;
+AccordionGroup.properties = __spreadProps(__spreadValues({}, BaseComponent.properties), {
+  multipleOpen: { attribute: true, type: Boolean, reflect: true }
+});
+define(AccordionGroup.tagName, AccordionGroup);
 /**
  * @license
  * Copyright 2017 Google LLC
@@ -1125,4 +1190,4 @@ define(Icon.tagName, Icon);
   body.prepend(theme2);
   body.classList.add("cta-components-loaded");
 })(globalThis);
-export { Accordion, Icon };
+export { Accordion, AccordionGroup, Icon };
