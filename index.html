@@ -1,74 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/src/favicon.svg" />
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <link
+  rel="stylesheet"
+  href="https://unpkg.com/tippy.js@6/animations/scale.css"
+/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + Lit App</title>
+    <script type="module" src="/src/index.ts"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/src/favicon.svg" />
-  <link rel="stylesheet" href="/assets/css/main.css" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vite + Lit App</title>
-  <script type="module" src="/src/index.ts"></script>
-
-</head>
-
-<body style="overflow: auto">
-  <cta-icons-sprite></cta-icons-sprite>
-  <div style="display: flex; min-height: 100%">
-    <div style="
+  <body style="overflow: auto">
+    <div style="display: flex; min-height: 100%">
+      <div
+        style="
           display: inline-block;
           width: 200px;
           margin-right: 50px;
           border-right: 1px solid rgba(0, 0, 0, 0.1);
-        ">
-        <div style="position:sticky; top: 10px">
-          <a style="display:block" href="#accordion">Accordion</a>
-          <a style="display:block" href="#icons">Icons</a>
+        "
+      >
+        <div style="position: sticky; top: 10px">
+          <a style="display: block" href="#accordion">Accordion</a>
+          <a style="display: block" href="#icons">Icons</a>
+          <a style="display: block" href="#tooltip">Tooltip</a>
         </div>
-    </div>
+      </div>
 
-    <div style="
+      <div
+        style="
           display: inline-block;
           width: calc(100% - 300px);
           padding-bottom: 10px;
-        ">
-      <div id="accordion">
-        <h2>Accordion</h2>
+        "
+      >
+        <div id="accordion">
+          <h2>Accordion</h2>
 
-        <div class="component-example">
-          <cta-accordion name="Planejamento">
-            O cuidado em identificar pontos críticos na crescente influência da mídia desafia a capacidade de equalização dos métodos utilizados na avaliação de resultados.
-          </cta-accordion>
-        </div>
-
-        <div class="dark-mode component-example">
-          <cta-accordion-group>
+          <div class="component-example">
             <cta-accordion name="Planejamento">
-              O cuidado em identificar pontos críticos na crescente influência da mídia desafia a capacidade de equalização dos métodos utilizados na avaliação de resultados.
+              O cuidado em identificar pontos críticos na crescente influência
+              da mídia desafia a capacidade de equalização dos métodos
+              utilizados na avaliação de resultados.
             </cta-accordion>
-            <cta-accordion name="Organização">
-              A nível organizacional, o acompanhamento das preferências de consumo não pode mais se dissociar do retorno esperado a longo prazo.
-            </cta-accordion>
+          </div>
 
-          </cta-accordion-group>
+          <div class="dark-mode component-example">
+            <cta-accordion-group>
+              <cta-accordion name="Planejamento">
+                O cuidado em identificar pontos críticos na crescente influência
+                da mídia desafia a capacidade de equalização dos métodos
+                utilizados na avaliação de resultados.
+              </cta-accordion>
+              <cta-accordion name="Organização">
+                A nível organizacional, o acompanhamento das preferências de
+                consumo não pode mais se dissociar do retorno esperado a longo
+                prazo.
+              </cta-accordion>
+            </cta-accordion-group>
+          </div>
+
+          <div class="component-example">
+            <cta-accordion __off__ name="Planejamento">
+              O cuidado em identificar pontos críticos na crescente influência
+              da mídia desafia a capacidade de equalização dos métodos
+              utilizados na avaliação de resultados.
+            </cta-accordion>
+          </div>
         </div>
 
-        <div class="component-example">
-          <cta-accordion __off__ name="Planejamento">
-            O cuidado em identificar pontos críticos na crescente influência da mídia desafia a capacidade de equalização dos métodos utilizados na avaliação de resultados.
-          </cta-accordion>
+        <div id="icons">
+          <h2>Icons</h2>
+
+          <div class="component-example">
+            <cta-icon inline name="chevron-down" width="50"></cta-icon>
+            <cta-icon inline name="close-circle" width="50"></cta-icon>
+          </div>
         </div>
-      </div>
 
-      <div id="icons">
-        <h2>Icons</h2>
+        <div id="tooltip">
+          <h2>Tooltip</h2>
 
-        <div class="component-example">
-          <cta-icon inline name="chevron-down" width="50"></cta-icon>
-          <cta-icon inline name="close-circle" width="50"></cta-icon>
+          <div class="component-example">
+            <p>
+              No entanto, não podemos esquecer que a execução dos pontos do
+              programa maximiza as possibilidades por conta de todos os recursos
+              funcionais envolvidos. Do mesmo modo, o novo modelo estrutural
+              aqui preconizado garante a contribuição de um grupo importante na
+              determinação das novas proposições. A prática cotidiana prova que
+              a
+              <cta-tooltip text="É importante questionar a expansão dos mercados mundiais.">
+                mobilidade dos capitais internacionais
+              </cta-tooltip>
+              estimula a padronização das direções preferenciais no sentido do
+              progresso. Nunca é demais lembrar o peso e o significado destes
+              problemas, uma vez que a consulta aos diversos militantes facilita
+              a criação do retorno esperado a longo prazo.
+            </p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</body>
-
+  </body>
 </html>

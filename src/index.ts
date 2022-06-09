@@ -1,7 +1,10 @@
+import 'tippy.js/dist/tippy.css';
+
 import { CtaTheme } from './theme';
 
 export * from './components/Accordion';
 export * from './components/Icon';
+export * from './components/Tooltip';
 
 ((window) => {
   if (typeof window.document === 'undefined') {
