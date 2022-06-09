@@ -2,6 +2,8 @@ import { css, html, PropertyDeclarations } from 'lit';
 import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
+import { KeyAttribute } from '../../extra-types';
+
 import { BaseComponent } from '../../utils/BaseComponent';
 import { define } from '../../utils/define';
 import { iconsMap } from './sprite-map';
@@ -15,7 +17,7 @@ declare global {
 
   namespace JSX {
     interface IntrinsicElements {
-      [TAG_NAME]: IconElementAttributes
+      [TAG_NAME]: IconElementAttributes & KeyAttribute
     }
   }
 }

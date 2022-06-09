@@ -1,10 +1,11 @@
 /// <reference types="react" />
 import { PropertyDeclarations, PropertyValueMap } from 'lit';
+import { KeyAttribute } from '../../extra-types';
 import { BaseComponent } from '../../utils/BaseComponent';
 declare const TAG_NAME = "cta-accordion";
 declare global {
     interface HTMLElementTagNameMap {
-        [TAG_NAME]: AccordionElement;
+        [TAG_NAME]: AccordionElement & KeyAttribute;
     }
     namespace JSX {
         interface IntrinsicElements {

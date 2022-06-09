@@ -1,5 +1,6 @@
 /// <reference types="react" />
 import { PropertyDeclarations } from 'lit';
+import { KeyAttribute } from '../../extra-types';
 import { BaseComponent } from '../../utils/BaseComponent';
 declare const TAG_NAME = "cta-accordion-group";
 declare global {
@@ -8,7 +9,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            [TAG_NAME]: AccordionGroupElementAttributes;
+            [TAG_NAME]: AccordionGroupElementAttributes & KeyAttribute;
         }
     }
 }

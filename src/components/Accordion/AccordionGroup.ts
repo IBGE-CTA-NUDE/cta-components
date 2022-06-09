@@ -1,5 +1,7 @@
 import { css, html, PropertyDeclarations } from 'lit';
 
+import { KeyAttribute } from '../../extra-types';
+
 import { BaseComponent } from '../../utils/BaseComponent';
 import { define } from '../../utils/define';
 import { addEventListener, UnlistenFunction } from '../../utils/addEventListener';
@@ -14,7 +16,7 @@ declare global {
 
   namespace JSX {
     interface IntrinsicElements {
-      [TAG_NAME]: AccordionGroupElementAttributes
+      [TAG_NAME]: AccordionGroupElementAttributes & KeyAttribute
     }
   }
 }

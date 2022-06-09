@@ -3,6 +3,8 @@ import { ref, createRef } from 'lit/directives/ref.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { v4 as uuidv4 } from 'uuid';
 
+import { KeyAttribute } from '../../extra-types';
+
 import { BaseComponent } from '../../utils/BaseComponent';
 import { define } from '../../utils/define';
 import { accordionStyles } from './styles';
@@ -11,7 +13,7 @@ const TAG_NAME = 'cta-accordion';
 
 declare global {
   interface HTMLElementTagNameMap {
-    [TAG_NAME]: AccordionElement
+    [TAG_NAME]: AccordionElement & KeyAttribute
   }
 
   namespace JSX {
