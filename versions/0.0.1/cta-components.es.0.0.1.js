@@ -585,6 +585,7 @@ BaseComponent.properties = {
 };
 const colors = r$4`
   :root {
+    /* Neutrals */
     --neutral-0: #000000; /* 0 */
     --neutral-26: #3d3d3d;  /* 25.8 */
     --neutral-50: #767676;  /* 49.6 */
@@ -592,6 +593,10 @@ const colors = r$4`
     --neutral-88: #dddddd;  /* 88.1 */
     --neutral-94: #eeeeee;  /* 94.1 */
     --neutral-100: #ffffff; /* 100 */
+
+    
+    /* Greens */
+    --green-80: #87dc00; /* 79.8 */
   }
 `;
 const baseVariables = r$4`
@@ -631,7 +636,7 @@ const typography = r$4`
 const darkTheme = r$4`
   ${typography}
 `;
-const theme = r$4`
+const theme$1 = r$4`
   :root {
     --accordion-trigger-border-color: var(--neutral-50);
     --accordion-trigger-open-background-color: var(--neutral-100);
@@ -641,7 +646,23 @@ const theme = r$4`
     --accordion-trigger-open-background-color: var(--neutral-26);
   }
 `;
+const tooltipStyles = r$4` 
+  html .tippy-box {
+    background-color: var(--tooltip-background-color);
+  }
+`;
+const theme = r$4`
+  :root {
+    --tooltip-background-color: var(--green-80);
+  }
+  :root .dark-mode {
+    --tooltip-background-color: var(--green-80);
+  }
+
+  ${tooltipStyles}
+`;
 const components = r$4`
+  ${theme$1}
   ${theme}
 `;
 const TAG_NAME$4 = "cta-theme";
@@ -3639,28 +3660,30 @@ Object.assign({}, applyStyles$1, {
 tippy.setDefaultProps({
   render
 });
-const tooltipStyles = r$4` 
+const contentStyles = r$4` 
   :host {
     cursor: help;
   }
   
   :host::before {
     position: relative;
-    top: .3rem;
+    top: .3em;
     left: 0;
     vertical-align: bottom;
     content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" fill="%23767676"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
     -webkit-animation: moveArrowLeft 1s linear infinite alternate;
-    animation: moveArrowLeft 1s linear infinite alternate
+    animation: moveArrowLeft 1s linear infinite alternate;
+    white-space: nowrap;
 }
 
 :host::after {
     position: relative;
-    top: .3rem;
+    top: .3em;
     right: 0;
     content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" fill="%23767676"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
     -webkit-animation: moveArrowRight 1s linear infinite alternate;
-    animation: moveArrowRight 1s linear infinite alternate
+    animation: moveArrowRight 1s linear infinite alternate;
+    white-space: nowrap;
 }
 
 @-webkit-keyframes moveArrowLeft {
@@ -3730,13 +3753,13 @@ class Tooltip extends BaseComponent {
     if (!this.contentRef.value) {
       return;
     }
-    tippy(this, {
+    const instance = tippy(this, {
       arrow: true,
       content: this.text
     });
+    instance.show();
   }
   onSlotChange(event) {
-    debugger;
     const slot = event.target instanceof HTMLSlotElement ? event.target : null;
     if (!slot) {
       return;
@@ -3750,7 +3773,7 @@ class Tooltip extends BaseComponent {
   }
 }
 Tooltip.tagName = TAG_NAME;
-Tooltip.styles = [tooltipStyles];
+Tooltip.styles = [contentStyles];
 Tooltip.properties = {
   text: { attribute: true, type: String, reflect: true }
 };
