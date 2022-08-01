@@ -1,11 +1,11 @@
-import { html } from "lit";
+import {html} from 'lit';
 
-import { BaseComponent } from "../utils/BaseComponent";
-import { baseVariables } from "./base-variables";
-import { define } from '../utils/define';
-import { lightTheme } from "./light-theme";
-import { darkTheme } from "./dark-theme";
-import { components } from "./components";
+import {BaseComponent} from '../utils/BaseComponent';
+import {baseVariables} from './base-variables';
+import {define} from '../utils/define';
+import {lightTheme} from './light-theme';
+import {darkTheme} from './dark-theme';
+import {components} from './components';
 
 const TAG_NAME = 'cta-theme';
 
@@ -19,11 +19,11 @@ export class CtaTheme extends BaseComponent {
   static tagName = TAG_NAME;
 
   protected override createRenderRoot(): Element | ShadowRoot {
-      return this;
+    return this;
   }
 
   protected override render() {
-      return html`
+    return html`
         <style>
           .cta-theme {
             display: none;
@@ -33,7 +33,7 @@ export class CtaTheme extends BaseComponent {
           ${darkTheme}
           ${components}
         </style>
-      `
+      `;
   }
 }
 

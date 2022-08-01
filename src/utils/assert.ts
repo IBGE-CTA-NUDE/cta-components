@@ -1,11 +1,11 @@
 export function assert(
-  expression: () => boolean, 
-  errorMessage: string
+    expression: () => boolean,
+    errorMessage: string,
 ): void {
-  const assertion = expression()
-  
+  const assertion = expression();
+
   if (assertion) {
-    return
+    return;
   }
 
   throw new Error(errorMessage || 'unknown assertion error');

@@ -1,12 +1,12 @@
-import { css, html, PropertyDeclarations } from 'lit';
-import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
-import { ifDefined } from 'lit/directives/if-defined.js';
+import {css, html, PropertyDeclarations} from 'lit';
+import {unsafeSVG} from 'lit/directives/unsafe-svg.js';
+import {ifDefined} from 'lit/directives/if-defined.js';
 
-import { KeyAttribute } from '../../extra-types';
+import {KeyAttribute} from '../../extra-types';
 
-import { BaseComponent } from '../../utils/BaseComponent';
-import { define } from '../../utils/define';
-import { iconsMap } from './sprite-map';
+import {BaseComponent} from '../../utils/BaseComponent';
+import {define} from '../../utils/define';
+import {iconsMap} from './sprite-map';
 
 const TAG_NAME = 'cta-icon';
 
@@ -25,8 +25,8 @@ declare global {
 export interface IconElementAttributes extends React.HTMLAttributes<HTMLDivElement> {
   /** The svg icon id */
   name: string;
-  /** 
-   * The icon is used inline or as a block element 
+  /**
+   * The icon is used inline or as a block element
    * @default false
   */
   inline?: boolean;
@@ -41,8 +41,8 @@ export interface IconElementAttributes extends React.HTMLAttributes<HTMLDivEleme
 export interface IconElement extends HTMLElement, BaseComponent {
   /** The svg icon id */
   name: string;
-  /** 
-   * The icon is used inline or as a block element 
+  /**
+   * The icon is used inline or as a block element
    * @default false
   */
   inline?: boolean;
@@ -66,14 +66,14 @@ export class Icon extends BaseComponent {
     :host([inline]) {
       display: inline-flex;
     }
-  `
+  `;
 
   static override properties: PropertyDeclarations = {
-    name: { attribute: true, type: String, reflect: true },
-    inline: { attribute: true, type: Boolean, reflect: true }, 
-    class: { attribute: true, type: String, reflect: true },
-    width: { attribute: true, type: Number, reflect: true },
-    height: { attribute: true, type: Number, reflect: true },
+    name: {attribute: true, type: String, reflect: true},
+    inline: {attribute: true, type: Boolean, reflect: true},
+    class: {attribute: true, type: String, reflect: true},
+    width: {attribute: true, type: Number, reflect: true},
+    height: {attribute: true, type: Number, reflect: true},
   };
 
   name = '';

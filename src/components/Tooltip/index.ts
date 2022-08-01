@@ -1,12 +1,12 @@
-import { html, PropertyDeclarations } from "lit";
-import { ref, createRef } from 'lit/directives/ref.js';
-import React from "react";
+import {html, PropertyDeclarations} from 'lit';
+import {ref, createRef} from 'lit/directives/ref.js';
+import React from 'react';
 import tippy from 'tippy.js';
 
-import { KeyAttribute } from "../../extra-types";
-import { BaseComponent } from "../../utils/BaseComponent";
-import { define } from "../../utils/define";
-import { contentStyles } from "./contentStyles";
+import {KeyAttribute} from '../../extra-types';
+import {BaseComponent} from '../../utils/BaseComponent';
+import {define} from '../../utils/define';
+import {contentStyles} from './contentStyles';
 
 const TAG_NAME = 'cta-tooltip';
 
@@ -32,7 +32,7 @@ export class Tooltip extends BaseComponent {
   static styles = [contentStyles];
 
   static override properties: PropertyDeclarations = {
-    text: { attribute: true, type: String, reflect: true },
+    text: {attribute: true, type: String, reflect: true},
   };
 
   text = '';
@@ -45,8 +45,8 @@ export class Tooltip extends BaseComponent {
 
     tippy(this, {
       arrow: true,
-      content: this.text
-    })
+      content: this.text,
+    });
   }
 
 

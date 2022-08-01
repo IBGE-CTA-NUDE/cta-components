@@ -1,4 +1,4 @@
-import { css } from "lit";
+import {css} from 'lit';
 
 export const contentStyles = css` 
   :host {
@@ -81,4 +81,4 @@ export const contentStyles = css`
         right: 0
     }
 }
-`
+`;

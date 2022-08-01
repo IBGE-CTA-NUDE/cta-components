@@ -1,4 +1,4 @@
-import { css } from "lit";
+import {css} from 'lit';
 
 export const accordionStyles = css`
   :host:not([__off__]) {

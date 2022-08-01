@@ -1,4 +1,4 @@
-import { html, LitElement, PropertyDeclarations } from 'lit';
+import {html, LitElement, PropertyDeclarations} from 'lit';
 
 export interface BaseComponent {
   __off__: boolean
@@ -12,7 +12,7 @@ export class BaseComponent extends LitElement {
   };
 
   static override properties: PropertyDeclarations = {
-    __off__: { attribute: true, type: Boolean, reflect: true },
+    __off__: {attribute: true, type: Boolean, reflect: true},
   };
 
   __off__ = false;

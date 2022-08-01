@@ -1,5 +1,5 @@
-/// <reference types="react" />
 import { PropertyDeclarations } from "lit";
+import React from "react";
 import { KeyAttribute } from "../../extra-types";
 import { BaseComponent } from "../../utils/BaseComponent";
 declare const TAG_NAME = "cta-tooltip";
@@ -22,7 +22,7 @@ export declare class Tooltip extends BaseComponent {
     static styles: import("lit").CSSResult[];
     static properties: PropertyDeclarations;
     text: string;
-    contentRef: import("lit-html/directives/ref").Ref<HTMLSlotElement>;
+    private contentRef;
     private createTooltip;
     private onSlotChange;
     protected render(): import("lit-html").TemplateResult<1>;

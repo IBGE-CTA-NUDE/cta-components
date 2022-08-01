@@ -1,4 +1,4 @@
-import { css } from "lit";
+import {css} from 'lit';
 
 /**
  * Colors numbers based on L value of HSLuv color space

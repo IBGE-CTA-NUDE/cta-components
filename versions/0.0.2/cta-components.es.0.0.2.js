@@ -673,8 +673,17 @@ const theme$1 = r$4`
   }
 `;
 const tooltipStyles = r$4` 
-  html .tippy-box {
+  .tippy-box {
+    color: var(--neutral-0);
     background-color: var(--tooltip-background-color);
+    padding: 0.5em;
+    font-size: 0.63rem;
+    font-weight: 400;
+    line-height: 1.26;
+  }
+
+  .tippy-box .tippy-arrow {
+    color: var(--tooltip-background-color);
   }
 `;
 const theme = r$4`
@@ -1057,9 +1066,9 @@ class Accordion extends BaseComponent {
     return $`
       <div data-name="accordion-trigger" @click=${this.onClick} aria-controls=${this.uuid} aria-expanded=${this.open}
         class=${o$1(classes)}>
-        <div data-name="accordion-trigger-content">
+        <button type="button" data-name="accordion-trigger-content">
           ${this.name}
-        </div>
+        </button>
         <cta-icon data-name="accordion-trigger-icon" name="chevron-down" width="24" height="24"></cta-icon>
       </div>
       
@@ -3788,18 +3797,17 @@ const TAG_NAME = 'cta-tooltip';
 class Tooltip extends BaseComponent {
   constructor() {
     super(...arguments);
-    this.text = 'Tooltip';
+    this.text = '';
     this.contentRef = e$1();
   }
   createTooltip() {
     if (!this.contentRef.value) {
       return;
     }
-    const instance = tippy(this, {
+    tippy(this, {
       arrow: true,
       content: this.text,
     });
-    instance.show();
   }
   onSlotChange(event) {
     const slot = event.target instanceof HTMLSlotElement ? event.target : null;

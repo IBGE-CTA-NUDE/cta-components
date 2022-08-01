@@ -1,7 +1,7 @@
 {
   "name": "cta-components",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "dist/cta-components.umd.js",
   "module": "dist/cta-components.es.js",
   "license": "UNLICENSED",
@@ -21,10 +21,13 @@
     "build": "yarn icons && yarn theme:components && yarn vite:build && yarn copy:local-versions && yarn copy:cta-builder",
     "icons": "node ./lib/create-icons-sprite.js",
     "theme:components": "node ./lib/update-components-theme.js",
-    "vite:dev": "vite",
-    "vite:build": "tsc && vite build",
+    "vite:dev": "yarn lint && vite",
+    "vite:build": "yarn lint && tsc && vite build",
     "copy:local-versions": "cp -a ./dist/. ./versions/",
-    "copy:cta-builder": "cp -a ./dist/. ../cta-builder/assets/js/ && cp -a ./types/. ../cta-builder/types/cta-components/"
+    "copy:cta-builder": "cp -a ./dist/. ../cta-builder/assets/js/ && cp -a ./types/. ../cta-builder/types/cta-components/",
+    "lint": "npx eslint \"**/*.{jsx,js,tsx,ts}\"",
+    "lint:fix": "npx eslint \"**/*.{jsx,js,tsx,ts}\" --fix",
+    "lint:quiet": "npx eslint \"**/*.{jsx,js,tsx,ts}\" --quiet"
   },
   "dependencies": {
     "lit": "^2.2.5",
@@ -33,9 +36,14 @@
   },
   "devDependencies": {
     "@svgdotjs/svg.js": "^3.1.2",
+    "@typescript-eslint/eslint-plugin": "^5.31.0",
+    "@typescript-eslint/parser": "^5.31.0",
+    "eslint": ">=5.16.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-react": "^7.30.1",
     "glob": "^8.0.3",
     "svgdom": "^0.1.10",
-    "typescript": "^4.7.3",
+    "typescript": "^4.7.4",
     "vite": "^2.9.10"
   }
 }

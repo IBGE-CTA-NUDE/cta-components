@@ -1,11 +1,11 @@
-import { css, html, PropertyDeclarations } from 'lit';
+import {css, html, PropertyDeclarations} from 'lit';
 
-import { KeyAttribute } from '../../extra-types';
+import {KeyAttribute} from '../../extra-types';
 
-import { BaseComponent } from '../../utils/BaseComponent';
-import { define } from '../../utils/define';
-import { addEventListener, UnlistenFunction } from '../../utils/addEventListener';
-import { hasProperty } from '../../utils/hasProperty';
+import {BaseComponent} from '../../utils/BaseComponent';
+import {define} from '../../utils/define';
+import {addEventListener, UnlistenFunction} from '../../utils/addEventListener';
+import {hasProperty} from '../../utils/hasProperty';
 
 const TAG_NAME = 'cta-accordion-group';
 
@@ -41,7 +41,7 @@ export class AccordionGroup extends BaseComponent {
 
   static override properties: PropertyDeclarations = {
     ...BaseComponent.properties,
-    multipleOpen: { attribute: true, type: Boolean, reflect: true },
+    multipleOpen: {attribute: true, type: Boolean, reflect: true},
   };
 
   // Properties
@@ -53,14 +53,14 @@ export class AccordionGroup extends BaseComponent {
   // Lifecycle methods
   override connectedCallback(): void {
     this.removeListener = addEventListener(
-      this,
-      'click',
-      this.onClick.bind(this)
-    )
+        this,
+        'click',
+        this.onClick.bind(this),
+    );
   }
 
   override disconnectedCallback() {
-    super.disconnectedCallback()
+    super.disconnectedCallback();
     this.currentlyOpen = null;
     this.removeListener?.();
   }
@@ -76,7 +76,7 @@ export class AccordionGroup extends BaseComponent {
     const target = event.target instanceof HTMLElement ? event.target : null;
 
     if (!target) {
-      return 
+      return;
     }
 
     if (target === this.currentlyOpen) {
@@ -90,7 +90,7 @@ export class AccordionGroup extends BaseComponent {
     this.currentlyOpen = target;
   }
 
-  // RENDER 
+  // RENDER
   override render() {
     if (this.__off__) {
       return html`${this.innerHTML}`;

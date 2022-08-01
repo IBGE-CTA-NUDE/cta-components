@@ -1,5 +1,5 @@
-import { css } from 'lit';
-import { tooltipStyles } from './tooltipStyles'
+import {css} from 'lit';
+import {tooltipStyles} from './tooltipStyles';
 
 const theme = css`
   :root {

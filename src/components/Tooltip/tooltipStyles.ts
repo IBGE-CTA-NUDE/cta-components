@@ -1,9 +1,11 @@
-import { css } from "lit";
+import {css} from 'lit';
 
 /**
  * Follow https://atomiks.github.io/tippyjs/v6/themes/
  * A tippy is essentially three nested divs.
-    - [data-tippy-root] is the outermost node. It is what Popper uses to position the tippy. You don't need to apply any styles to this element.
+    - [data-tippy-root] is the outermost node. 
+          It is what Popper uses to position the tippy.
+          You don't need to apply any styles to this element.
     - tippy-box is the actual box node.
     - tippy-content is the content node.
 
@@ -18,7 +20,7 @@ import { css } from "lit";
         </div>
       </div>
     </div>
- */ 
+ */
 
 
 export const tooltipStyles = css` 
@@ -34,4 +36,4 @@ export const tooltipStyles = css`
   .tippy-box .tippy-arrow {
     color: var(--tooltip-background-color);
   }
-`
+`;

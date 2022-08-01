@@ -1,13 +1,13 @@
-import { html, PropertyDeclarations, PropertyValueMap, } from 'lit';
-import { ref, createRef } from 'lit/directives/ref.js';
-import { classMap } from 'lit/directives/class-map.js';
-import { v4 as uuidv4 } from 'uuid';
+import {html, PropertyDeclarations, PropertyValueMap} from 'lit';
+import {ref, createRef} from 'lit/directives/ref.js';
+import {classMap} from 'lit/directives/class-map.js';
+import {v4 as uuidv4} from 'uuid';
 
-import { KeyAttribute } from '../../extra-types';
+import {KeyAttribute} from '../../extra-types';
 
-import { BaseComponent } from '../../utils/BaseComponent';
-import { define } from '../../utils/define';
-import { accordionStyles } from './styles';
+import {BaseComponent} from '../../utils/BaseComponent';
+import {define} from '../../utils/define';
+import {accordionStyles} from './styles';
 
 const TAG_NAME = 'cta-accordion';
 
@@ -43,15 +43,15 @@ export class Accordion extends BaseComponent {
 
   static override properties: PropertyDeclarations = {
     ...BaseComponent.properties,
-    open: { attribute: true, type: Boolean, reflect: true },
-    name: { attribute: true, type: String, reflect: true },
+    open: {attribute: true, type: Boolean, reflect: true},
+    name: {attribute: true, type: String, reflect: true},
   };
 
   // Properties
   open = false;
   name = '';
   uuid = '';
-  panelRef = createRef<HTMLElement>()
+  panelRef = createRef<HTMLElement>();
 
   constructor() {
     super();
@@ -75,7 +75,7 @@ export class Accordion extends BaseComponent {
   // Component methods
   private handleIsOpenClass() {
     const className = 'is-open';
-    const { open } = this;
+    const {open} = this;
 
     if (open) {
       this.classList.add(className);
@@ -100,22 +100,22 @@ export class Accordion extends BaseComponent {
 
   collapsePanel(element: HTMLElement) {
     // get the height of the element's inner content, regardless of its actual size
-    var sectionHeight = element.scrollHeight;
+    const sectionHeight = element.scrollHeight;
 
     // temporarily disable all css transitions
-    var elementTransition = element.style.transition;
+    const elementTransition = element.style.transition;
     element.style.transition = '';
 
     // on the next frame (as soon as the previous style change has taken effect),
-    // explicitly set the element's height to its current pixel height, so we 
+    // explicitly set the element's height to its current pixel height, so we
     // aren't transitioning out of 'auto'
-    requestAnimationFrame(function () {
+    requestAnimationFrame(function() {
       element.style.height = `${sectionHeight}px`;
       element.style.transition = elementTransition;
 
       // on the next frame (as soon as the previous style change has taken effect),
       // have the element transition to height: 0
-      requestAnimationFrame(function () {
+      requestAnimationFrame(function() {
         element.classList.remove('panel-open');
         element.style.height = '0px';
       });
@@ -127,7 +127,7 @@ export class Accordion extends BaseComponent {
 
   expandPanel(element: HTMLElement) {
     // get the height of the element's inner content, regardless of its actual size
-    var sectionHeight = element.scrollHeight;
+    const sectionHeight = element.scrollHeight;
 
     // have the element transition to the height of its inner content
     element.style.height = sectionHeight + 'px';
@@ -142,9 +142,9 @@ export class Accordion extends BaseComponent {
     this.open = !this.open;
   }
 
-  // RENDER 
+  // RENDER
   override render() {
-    const classes = { open: this.open };
+    const classes = {open: this.open};
 
     if (this.__off__) {
       return html`${this.innerHTML}`;
